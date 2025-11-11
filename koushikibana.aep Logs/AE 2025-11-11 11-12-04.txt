@@ -1,0 +1,17 @@
+Adobe After Effects v25.5 Windows 64 render log for project “koushikibana.aep”
+
+Rendering started on 2025/11/11 at 11:12:04
+
+  2025/11/11 11:12:04: Starting composition “kousikibana”.
+
+  Output To: C:\Users\owner\Desktop\今日のタスク\URARA-1109\Urara3\public\kousikibana.mp4    2025/11/11 11:12:07: Finished composition “kousikibana”.
+
+
+  2025/11/11 11:12:07: Starting composition “kousikibana”.
+
+  Output To: C:\Users\owner\Desktop\今日のタスク\URARA-1109\Urara3\public\kousikibana2.mp4    2025/11/11 11:12:09: Finished composition “kousikibana”.
+
+
+  Total Time Elapsed: 5 Seconds
+Log closed on 2025/11/11 at 11:12:09
+
