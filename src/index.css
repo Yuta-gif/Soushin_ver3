@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap');/* Removed empty ruleset to satisfy linter */
+.my-styled-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 10px;
+  font-weight: 600; /* @importで600を読み込んでいる必要あり */
+  text-align: center;
+  margin: auto;
+}
+
+.my-styled-text2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 600; /* @importで600を読み込んでいる必要あり */
+  text-align: center;
+  margin: auto;
+}
+
+.normal-text{
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  font-family: "ヒラギノ角ゴシック W7";
+  font-weight:600;
+  line-height: 34.2px;
+  
+  margin:auto;
+}
+
+.small-text{
+  font-size: 15px;
+  color: black;
+  text-align: center;
+  font-family: "ヒラギノ角ゴシック W7";
+  font-weight:400;
+  margin: auto;
+
+}
+
+.so-small-text{
+  font-size: 10pt;
+  color: black;
+  text-align: center;
+  font-family: "ヒラギノ角ゴシック W7";
+  font-weight:450;
+
+
+}
+
+
+.FV{
+  width:100%;
+  margin:auto;
+}
+
+.image{
+  width: 100%;
+  margin:auto;
+}
+
+.btn{
+  color:pink;
+  background-color: black;
+  border-radius: 100vh;
+
+}
+
+.chusyaku{
+  font-size: 7px;
+  text-align: right;
+  color: grey;
+  margin: auto;
+
+}
+
+.highlighing-yellow {
+  background-color: yellow;
+  padding: 0; /* ← 7pxから0に変更（またはこの行ごと削除） */
+  margin: 0 auto;
+  display: inline-block;
+  line-height: 1.1;/*👈テキストの高さ自体に合わせて、その1.1倍に塗る*/
+
+}
+
+.highlighing-pale-yellow{
+  background-color: rgb(255, 255, 203);
+  line-height: 1.2em;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.yellow{
+  background-color: yellow;
+  padding: 10px 10px;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+
+}
+
+.yellow2{
+  background: rgb(255, 255, 0);            /* 黄色 */
+  padding: 0em 0.01em;          /* 文字サイズに比例 */
+  border-radius: 0.25em;          /* 角丸も比例 */
+  display: inline;                /* インラインのままOK */
+  box-decoration-break: clone;    /* 複数行で1行ずつ背景を分割 */
+  -webkit-box-decoration-break: clone; /* Safari用 */
+}
+
+
+
+
+.zoom-text {
+  display: inline-block; /* transform を効かせるため */
+  animation: zoomInOut 2s infinite ease-in-out;
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3); /* 最大130%に拡大 */
+  }
+}
+
+
+
+<!--選択肢ボタンの装飾-->
+.shifting-button{
+    display: block;
+    gap: 10px;
+    text-align: center;
+}
+
+.shifting-button .pushingbutton,
+.shifting-button .pushingbutton2,
+.shifting-button .pushingbutton3
+{
+    width: 90%;
+    height: 70px;
+    text-align: center;
+    margin: 10px auto;
+    display: block;
+    color: #fc57c8;/*文字色*/
+    border: solid 3px #e457fc;/*線色*/
+    border-radius: 0.5em;/*角丸*/
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+.shifting-button .active{
+    background-color: pink;
+}
+
+.anquiet-button{
+  width: 90%;
+  height: 70px;
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+  color: #fc57c8;/*文字色*/
+  border: solid 3px #e457fc;/*線色*/
+  border-radius: 0.5em;/*角丸*/
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.small-box-for-midashi{
+  font-size: 40px;
+  padding: 10px;
+  border-color: #FF3399;
+  
+}
+
+.midashi-box{
+  padding: 50px;
+  border: 4px solid #FF3399;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+.point-box{
+  padding: auto;
+  border-bottom:2px solid rgb(255, 42, 209);
+  border-top:2px solid rgb(255, 42, 209);
+  border-left:5px solid rgb(255, 42, 209);
+  border-right:5px solid rgb(255, 42, 209);
+  background-color: rgb(255, 42, 209);
+  text-align: left;
+  font-size: 10px;
+  color: white;
+  width: fit-content;
+}
+
+.box-design3 {
+  margin: 1px auto 1px;
+  padding: auto;
+  border-top:2px solid rgb(255, 42, 209);
+  border-bottom: 2px solid rgb(255, 42, 209);
+
+}
+
+.normal-text p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.chusyaku{
+  font-size: 8px;
+  text-align: right;
+  color: rgb(162, 161, 161);
+  margin: auto;
+  line-height: 1em;
+
+}
+
+.medatase-box
+  {
+    width: 80%;
+    height: 70px;
+    text-align: center;
+    margin: 10px auto;
+    display: block;
+    color: #fc57c8;/*文字色*/
+    border: solid 6px #ee0000;/*線色*/
+    border-radius: 0.5em;/*角丸*/
+
+}
+
+#root, #app {
+  max-width: 396px;  /* ← 基準にしたいスマホの幅を指定 */
+  margin: 0 auto;    /* ← PCで見たときの中央揃え */
+  
+  /* お好みで影や背景色を */
+}
