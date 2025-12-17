@@ -1,11 +1,27 @@
+import { useState } from 'react'; // ★これを忘れずに
+import Confetti from 'react-confetti'; // ★紙吹雪ライブラリをインポート
 function App() {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const [q1, setQ1] = useState(null); // 問1用
+  const [q2, setQ2] = useState(null); // 問2用
+  const [q3, setQ3] = useState(null); // 問3用
+
+  // ★ 2. 選択された時の「ピンク色スタイル」を定義（コピペ用）
+  const activeStyle = {
+    backgroundColor: "pink",
+    color: "white",
+    borderColor: "pink"
+  };
+
+
   return (
 <div>
 <p
     className="my-styled-text">
     PR:医療法人社団　宇良々舎
   </p>
-  <img alt="FV" className="FV" src="FV/FV.png" />
+  <img loading="lazy" decoding="async" loading="lazy" decoding="async" alt="FV" className="FV" src="FV/FV.png" />
   <video
     autoPlay
     loop
@@ -82,44 +98,156 @@ function App() {
   </p>
   <p className="chusyaku">※申し込みページ内に適用条件を記載しております</p>
   <br />
-  <img className="FV" src="iryoudaietto200manenbun.jpg" />
+  <img loading="lazy" decoding="async" className="FV" src="iryoudaietto200manenbun.jpg" />
   <p className="so-small-text">30秒で終わるアンケートはこちら👇</p>
   <br />
   <br />
-  <img className="FV" src="q1.png" />
-  <br />
-  <div className="shifting-button">
-    <button className="pushingbutton" style={{fontSize:"20px",fontWeight:"900"}}>毎日走らないといけないのがツラい..</button>
-    <button className="pushingbutton" style={{fontSize:"20px",fontWeight:"900"}}>好きなものが食べれないのがツラい..</button>
-    <button className="pushingbutton" style={{fontSize:"20px",fontWeight:"900"}}>全然痩せないのがツラい..</button>
-    <button className="pushingbutton" style={{fontSize:"20px",fontWeight:"900"}}>リバウンドするのがツラい..</button>
-  </div>
-  <br />
-  <img className="FV" src="q2.png" />
-  <div className="shifting-button">
-  <button className="pushingbutton2"style={{fontSize:"20px",fontWeight:"900",}}>脂肪冷却 <br /><span style={{fontSize:"15px",fontWeight:"700"}}>1回で脂肪細胞-20%</span></button>
-  <button className="pushingbutton2"style={{fontSize:"20px",fontWeight:"900",}}>GLP-1 <br /><span style={{fontSize:"15px",fontWeight:"700"}}>食べても太りにくい体質に変化へ！</span></button>
-  <button className="pushingbutton2"style={{fontSize:"20px",fontWeight:"900",}}>全顔美顔EMS <br /><span style={{fontSize:"15px",fontWeight:"700"}}>モデルのような小顔も目指せちゃう！</span></button>
-  <button className="pushingbutton2"style={{fontSize:"20px",fontWeight:"900",}}>個別ダイエットコンサル<br /><span style={{fontSize:"15px",fontWeight:"700"}}>骨格に合わせたオーダーメイドダイエット</span></button>
-  </div>
-  <br />
-  <img className="FV" src="q3.png" />
-  <div className="shifting-button">
-    <button className="pushingbutton3" style={{fontSize:"20px",fontWeight:"900"}}>水着を堂々と着たい！</button>
-    <button className="pushingbutton3" style={{fontSize:"20px",fontWeight:"900"}}>照明つけて彼氏とイチャイチャ！💚</button>
-    <button className="pushingbutton3" style={{fontSize:"20px",fontWeight:"900"}}>好きな人にアプローチしたい！</button>
-    <button className="pushingbutton3" style={{fontSize:"20px",fontWeight:"900"}}>好きなものを好きなだけ食べたい！</button>
-  </div>
-  <br />
-  <br />
-  <button id="startBtn" class="anquiet-button" style={{fontSize:"20px",fontWeight:"900"}}>回答する</button>
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <div className="normal-text" id="below_anquiet">
-    <p>ご回答ありがとうございました！</p>
+
+
+
+  <div className="App">
+      {/* --- 問1 --- */}
+      <img loading="lazy" decoding="async" className="FV" src="q1.png" />
+      <br />
+      <div className="shifting-button">
+        {/* onClickで番号(1)を保存。 styleの中で「q1が1ならピンク」という条件を入れる */}
+        <button 
+          className="pushingbutton" 
+          onClick={() => setQ1(1)} 
+          style={{fontSize:"20px", fontWeight:"900", ...(q1 === 1 ? activeStyle : {})}}
+        >
+          毎日走らないといけないのがツラい..
+        </button>
+
+        <button 
+          className="pushingbutton" 
+          onClick={() => setQ1(2)} 
+          style={{fontSize:"20px", fontWeight:"900", ...(q1 === 2 ? activeStyle : {})}}
+        >
+          好きなものが食べれないのがツラい..
+        </button>
+
+        <button 
+          className="pushingbutton" 
+          onClick={() => setQ1(3)} 
+          style={{fontSize:"20px", fontWeight:"900", ...(q1 === 3 ? activeStyle : {})}}
+        >
+          全然痩せないのがツラい..
+        </button>
+
+        <button 
+          className="pushingbutton" 
+          onClick={() => setQ1(4)} 
+          style={{fontSize:"20px", fontWeight:"900", ...(q1 === 4 ? activeStyle : {})}}
+        >
+          リバウンドするのがツラい..
+        </button>
+      </div>
+      
+      <br />
+
+      {/* --- 問2 --- */}
+      <img loading="lazy" decoding="async" className="FV" src="q2.png" />
+      <div className="shifting-button">
+        <button 
+          className="pushingbutton2" 
+          onClick={() => setQ2(1)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q2 === 1 ? activeStyle : {})}}
+        >
+          脂肪冷却 <br /><span style={{fontSize:"15px", fontWeight:"700"}}>1回で脂肪細胞-20%</span>
+        </button>
+
+        <button 
+          className="pushingbutton2" 
+          onClick={() => setQ2(2)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q2 === 2 ? activeStyle : {})}}
+        >
+          GLP-1 <br /><span style={{fontSize:"15px", fontWeight:"700"}}>食べても太りにくい体質に変化へ！</span>
+        </button>
+
+        <button 
+          className="pushingbutton2" 
+          onClick={() => setQ2(3)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q2 === 3 ? activeStyle : {})}}
+        >
+          全顔美顔EMS <br /><span style={{fontSize:"15px", fontWeight:"700"}}>モデルのような小顔も目指せちゃう！</span>
+        </button>
+
+        <button 
+          className="pushingbutton2" 
+          onClick={() => setQ2(4)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q2 === 4 ? activeStyle : {})}}
+        >
+          個別ダイエットコンサル<br /><span style={{fontSize:"15px", fontWeight:"700"}}>骨格に合わせたオーダーメイドダイエット</span>
+        </button>
+      </div>
+
+      <br />
+
+      {/* --- 問3 --- */}
+      <img loading="lazy" decoding="async" className="FV" src="q3.png" />
+      <div className="shifting-button">
+        <button 
+          className="pushingbutton3" 
+          onClick={() => setQ3(1)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q3 === 1 ? activeStyle : {})}}
+        >
+          水着を堂々と着たい！
+        </button>
+
+        <button 
+          className="pushingbutton3" 
+          onClick={() => setQ3(2)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q3 === 2 ? activeStyle : {})}}
+        >
+          照明つけて彼氏とイチャイチャ！💚
+        </button>
+
+        <button 
+          className="pushingbutton3" 
+          onClick={() => setQ3(3)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q3 === 3 ? activeStyle : {})}}
+        >
+          好きな人にアプローチしたい！
+        </button>
+
+        <button 
+          className="pushingbutton3" 
+          onClick={() => setQ3(4)}
+          style={{fontSize:"20px", fontWeight:"900", ...(q3 === 4 ? activeStyle : {})}}
+        >
+          好きなものを好きなだけ食べたい！
+        </button>
+      </div>
+    </div>
+    <br /><br />
+
+
+  
+    <button
+    id="startBtn"
+    className="anquiet-button"
+    onClick={() => setIsPressed(true)} // クリックしたら「押された状態」にする
+    disabled={isPressed} // 連打防止
+    style={{
+      fontSize: "20px",
+      fontWeight: "900",
+      /* ▼▼▼ ここからアニメーションの設定 ▼▼▼ */
+      backgroundColor: isPressed ? "#ff3399" : "white", // 押すとピンクに塗りつぶし
+      color: isPressed ? "white" : "#fc57c8",           // 文字は白く
+      border: isPressed ? "3px solid #ff3399" : "solid 3px #e457fc",
+      transform: isPressed ? "scale(0.95)" : "scale(1)", // グッと押し込まれる動き
+      transition: "all 0.2s ease",                       // ふわっと動かす
+      cursor: isPressed ? "default" : "pointer"
+      /* ▲▲▲ ここまで ▲▲▲ */
+    }}
+  >
+    {/* 押されたら文字を変える */}
+    {isPressed ? "回答済み" : "回答する"}
+  </button>  <br /><br />
+
+  <div className='normal-text'>
+  <p>ご回答ありがとうございました！</p>
     <br />
     <p className="highlighing-yellow">回答者特典</p>
     <span>として</span>
@@ -148,6 +276,7 @@ function App() {
     </p>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しております</p>
     <br />
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video
       autoPlay
       loop
@@ -157,8 +286,21 @@ function App() {
       width="100%"
       margin="auto"
     />
+    </a>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しています</p>
     <br />
+  </div>
+
+
+
+
+
+  <div className='normal-text'>
+  
+  <div className="normal-text" id="below_anquiet">
+  </div>
+    
+
     <video
       autoPlay
       loop
@@ -259,7 +401,7 @@ function App() {
       通常、月々4万以上する
     </p>
     <p>医療ダイエットですが</p>
-    <img
+    <img loading="lazy" decoding="async"
       className="FV"
       src="kyukyokunoyasetaishituhe.png"
     />
@@ -296,6 +438,7 @@ function App() {
       </span>
     </p>
     <br />
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video
       autoPlay
       loop
@@ -304,6 +447,7 @@ function App() {
       src="kousikibana2.mp4"
       width="100%"
     />
+    </a>
         <p className="chusyaku">
       ※当社指定の信販会社をご利用した分割料金※他キャンペーンとの併用不可
     </p>
@@ -374,7 +518,7 @@ function App() {
     <p>・</p>
     <p>・</p>
     <p>・</p>
-    <img className="FV" src="nankaayashikunai2.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="nankaayashikunai2.jpg" />
     <p>と思った方！</p>
     <br />
     <video
@@ -429,7 +573,7 @@ function App() {
     </p>
     <p>様々な特典をご用意！</p>
     <br />
-    <img className="FV" src="samazamana.png" />
+    <img loading="lazy" decoding="async" className="FV" src="samazamana.png" />
     <p className="chusyaku">
       ※当社指定の信販会社をご利用した分割料金※他キャンペーンとの併用不可
     </p>
@@ -475,7 +619,7 @@ function App() {
       }}>
       さらに
     </p>
-    <img className="FV" src="iekaratookute.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="iekaratookute.jpg" />
     <p>という人のために！</p>
     <br />
     <p style={{fontSize:"19px",fontWeight:"400",lineHeight:"34.2px",margin:"auto"}}>このページから予約した方には</p>
@@ -483,7 +627,7 @@ function App() {
     <p style={{fontSize:"19px",fontWeight:"400",lineHeight:"34.2px",margin:"auto"}}>交通費として</p>
     <p style={{fontSize:"19px",fontWeight:"400",lineHeight:"34.2px",margin:"auto"}}>アマゾンギフト</p>
     <p>5000円分もプレゼント！</p>
-    <img className="FV" src="amazongift.jpg" style={{marginTop:"3px"}} />
+    <img loading="lazy" decoding="async" className="FV" src="amazongift.jpg" style={{marginTop:"3px"}} />
     <p className="chusyaku">
       ※この画面のスクリーンショットを撮り、カウンセリング時にカウンセラーにご提示ください。
       <br />
@@ -565,9 +709,11 @@ function App() {
     <p>下記ボタンから</p>
     <p>予約していただくようお願いします!</p>
     <br />
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video autoPlay loop muted playsInline src="rittaibotan.webm" width={"100%"}>
       お使いのブラウザは video タグに対応していません。
     </video>
+    </a>
     <p className="chusyaku">
       ※当社指定の信販会社をご利用した分割料金※他キャンペーンとの併用不可
     </p>
@@ -787,7 +933,7 @@ function App() {
       目指せるんです！
     </p>
     <br />
-    <img className="FV" src="karikarinominatokujoshi.png" />
+    <img loading="lazy" decoding="async" className="FV" src="karikarinominatokujoshi.png" />
     <p className="chusyaku">※画像はイメージです</p>
     <br />
     <br />
@@ -851,7 +997,7 @@ function App() {
         肥満の本当の原因は”アレ”だった..
       </p>
     </div>
-    <img className="FV" src="himannogeninhaumaretsukinotaishitsu.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="himannogeninhaumaretsukinotaishitsu.jpg" />
     <br />
     <br />
     <br />
@@ -866,7 +1012,7 @@ function App() {
       脂肪細胞
     </p>
     <p>という細胞にあったんです！</p>
-    <img className="FV" src="ishiintabyu.png" />
+    <img loading="lazy" decoding="async" className="FV" src="ishiintabyu.png" />
     <br />
     <video
       autoPlay
@@ -925,7 +1071,7 @@ function App() {
       不可能
     </p>
     <br />
-    <img
+    <img loading="lazy" decoding="async"
       className="FV"
       src="hutsunodaiettodato.jpg"
     />
@@ -1128,7 +1274,7 @@ function App() {
       </span>
       は全然してないのに！
     </p>
-    <img
+    <img loading="lazy" decoding="async"
       className="FV"
       src="HardActionNot/HardActionNot.png"
     />
@@ -1258,7 +1404,7 @@ function App() {
 
     <br />
     <br />
-    <img className="FV" src="watashidemodekisou.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="watashidemodekisou.jpg" />
     <br />
     <br />
     <p>そうでしょ？（笑）</p>
@@ -1326,7 +1472,7 @@ function App() {
         港区女子の爆美女スタイルの秘密
       </p>
     </div>
-    <img className="FV" src="munedakenokoshitaijigenno.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="munedakenokoshitaijigenno.jpg" />
     <p className="chusyaku">※画像はイメージです※効果には個人差があります</p>
     <br />
     <br />
@@ -1365,7 +1511,7 @@ function App() {
       ことが一般的
     </p>
     <br />
-    <img className="FV" src="jurainodaietto.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="jurainodaietto.jpg" />
     <br />
     <br />
     <p>しかし！</p>
@@ -1374,7 +1520,7 @@ function App() {
     <p>どこの脂肪を減らすかを選べるから</p>
     <p>胸だけを残した部分痩せも可能！</p>
     <br />
-    <img className="FV" src="korekaranodaietto.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="korekaranodaietto.jpg" />
     <p className="chusyaku">※画像はイメージです</p>
 
     <br />
@@ -1383,7 +1529,7 @@ function App() {
     <p>韓国アイドル並みの</p>
     <p>異次元のスタイルも目指せるんです・・！</p>
     <br />
-    <img className="FV" src="kanryuaidorunami.png" />
+    <img loading="lazy" decoding="async" className="FV" src="kanryuaidorunami.png" />
     <p className="chusyaku">※画像はイメージです</p>
     <br />
     <br />
@@ -1431,7 +1577,7 @@ function App() {
       関係者の間では周知の事実
     </p>
     <br />
-    <img
+    <img loading="lazy" decoding="async"
       className="FV"
       src="kankokuaidorunosutairuha.jpg"
     />
@@ -1521,7 +1667,7 @@ function App() {
     <br />
     <p className="small-text">実際、港区のお姉さんが</p>
     <p className="small-text">続々とウララで医療ダイエットしちゃってます..</p>
-    <img
+    <img loading="lazy" decoding="async"
       className="FV"
       src="kyukyokunoyasetaishituhe.png"
     />
@@ -1554,7 +1700,7 @@ function App() {
       200万円以上！
     </p>
     
-    <img className="FV" src="souba200man.png" width="100%" />
+    <img loading="lazy" decoding="async" className="FV" src="souba200man.png" width="100%" />
     <br />
     <br />
     <p  style={{fontSize:"18px",fontWeight:"400"}}>事務所のアイドルがメインで使う</p>
@@ -1579,7 +1725,7 @@ function App() {
         }}>月々9,780円～<span style={{fontSize:"10px",fontWeight:"400"}}>※</span></p>
     <p style={{fontSize:"18px",fontWeight:"400"}}>でご提供！</p>
     <br />
-    <img className="FV" src="kyougouhikaku.png" width="100%" />
+    <img loading="lazy" decoding="async" className="FV" src="kyougouhikaku.png" width="100%" />
     <p className="chusyaku">※効果には個人差があります</p>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しています</p>
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金</p>
@@ -1596,7 +1742,7 @@ function App() {
       まさに圧倒的！
     </p>
     <br />
-    <img className="FV" src="attoutekikosupa.webp" width="100%" />
+    <img loading="lazy" decoding="async" className="FV" src="attoutekikosupa.webp" width="100%" />
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金</p>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しています</p>
     <br />
@@ -1618,6 +1764,7 @@ function App() {
     </p>
     <br />
     <p>でご提供！</p>
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video
       autoPlay
       loop
@@ -1626,6 +1773,7 @@ function App() {
       src="koushikibana.mp4"
       width="100%"
     />
+    </a>
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金※他キャンペーンとの併用不可</p>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しています
     </p>
@@ -1639,7 +1787,7 @@ function App() {
     <p>一人一人のお客様に</p>
     <p>丁寧にご対応させていただきます♪💚</p>
     <br />
-    <img className="FV" src="kaunseringu.png" width="100%" />
+    <img loading="lazy" decoding="async" className="FV" src="kaunseringu.png" width="100%" />
     <br />
     <br />
     <p>これからの時代</p>
@@ -1720,7 +1868,9 @@ function App() {
       </span>で</p>
     <p>受けてくださいね💛</p>
     <br />
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video autoPlay loop muted playsInline src="rittaibotan.webm" width="100%" />
+    </a>
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金※他キャンペーンとの併用不可</p>
     <p className="chusyaku">※申し込みページ内に適用条件を記載しています
     </p>
@@ -1788,7 +1938,7 @@ function App() {
     <p>お礼として減量1キロにつき</p>
     <p>１万円をプレゼントしちゃいます！</p>
     <br />
-    <img className="FV" src="1キロにつき1蔓延4.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="1キロにつき1蔓延4.jpg" />
     <p className="chusyaku">※※申し込みページ内に適用条件を記載しています</p>
     <p className="chusyaku">※他キャンペーンとの併用不可</p>
     <br />
@@ -1797,7 +1947,7 @@ function App() {
     <p>５８キロ以上の女性に対して</p>
     <p>１０万円のギフトクーポンもプレゼント！</p>
     <br />
-    <img className="FV" src="10manenbun.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="10manenbun.jpg" />
     <p className="chusyaku">※総額料金からお値引きいたしますのでスタッフへお申し付けください</p>
     <p className="chusyaku">※男性は78㎏以上限定</p>
     <br />
@@ -1866,7 +2016,9 @@ function App() {
     <p style={{fontSize:"18px",fontWeight:"400"}}>すでにアンケートに回答いただいた方は</p>
     <p style={{fontSize:"18px",fontWeight:"400"}}>すぐこちらのページから</p>
     <p>予約枠をゲットしちゃってください！</p>
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video autoPlay loop muted playsInline src="rittaibotan.webm" width="100%" />
+    </a>
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金※申し込みページ内に適用条件を記載しています</p>
     <p className="chusyaku">※他キャンペーンとの併用不可</p>
     <br />
@@ -1895,12 +2047,14 @@ function App() {
     <p>今後上記特典を</p>
     <p>二度と受け取れない可能性がございます</p>
     <br />
-    <img className="FV" src="mudankyanseruha.jpg" />
+    <img loading="lazy" decoding="async" className="FV" src="mudankyanseruha.jpg" />
     <br />
     <p>ご都合が合わなくなった際には</p>
     <p>必ずご連絡をお願いいたします！</p>
     <br />
+    <a href="https://freestyle-ts.com/link.php?i=pi8doylelazb&m=mi8dp1646fow">
     <video autoPlay loop muted playsInline src="rittaibotan.webm" width="100%" />
+    </a>
     <p className="chusyaku">※当社指定の信販会社をご利用した分割料金※申し込みページ内に適用条件を記載しています</p>
     <p className="chusyaku">※他キャンペーンとの併用不可</p>
     <br />
