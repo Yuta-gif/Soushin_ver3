@@ -21,7 +21,7 @@ function App() {
     className="my-styled-text">
     PR:医療法人社団　宇良々舎
   </p>
-  <img loading="lazy" decoding="async" loading="lazy" decoding="async" alt="FV" className="FV" src="FV/FV.png" />
+  <img loading="lazy" decoding="async"   alt="FV" className="FV" src="FV/FV.png" />
   <video
     autoPlay
     loop
